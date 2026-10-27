@@ -1,0 +1,15 @@
+﻿severity,code,table,column,source_file,worksheet,source_row,value,message,resolution,total_affected
+check,Primary key completeness and uniqueness,,,,,,,PASSED,,0
+check,Duplicate records,,,,,,,PASSED,,0
+check,"Data-type compatibility, ambiguous dates, truncation",,,,,,,PASSED,,0
+check,Lost leading zeros,,,,,,,PASSED,,0
+check,Foreign-key references and parent keys,,,,,,,PASSED,,0
+check,Uniqueness constraints,,,,,,,PASSED,,0
+check,Unsupported constraint combinations,,,,,,,PASSED,,0
+check,Circular dependencies,,,,,,,PASSED,,0
+check,"Identifiers, reserved keywords and naming conflicts",,,,,,,PASSED,,0
+check,Source-to-target mapping conflicts,,,,,,,PASSED,,0
+check,Potentially destructive changes,,,,,,,PASSED,,0
+check,Empty sources,,,,,,,PASSED,,0
+check,Open decisions awaiting approval,,,,,,,FAILED,,1
+warning,column_unapproved,payments,amount,,,,,Needs review (low confidence): 60 of 61 values are numeric but 1 value(s) are not ('Pending'). Text is the safe default because converting would lose or reject those values.,Approve the type or change it.,

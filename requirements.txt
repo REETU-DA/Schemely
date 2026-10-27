@@ -1,0 +1,10 @@
+streamlit>=1.36
+pandas>=2.0
+openpyxl>=3.1
+xlrd>=2.0.1        # legacy .xls
+pyarrow>=14        # .parquet
+lxml>=5.0
+chardet>=5.0       # encoding detection
+graphviz>=0.20     # ER diagram (also needs the Graphviz program: https://graphviz.org/download/)
+sqlalchemy>=2.0    # optional: handy for loading the generated schema in your own scripts
+pytest>=8.0

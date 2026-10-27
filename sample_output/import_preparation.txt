@@ -1,0 +1,37 @@
+OUTPUT B - IMPORT PREPARATION
+
+Status: Review required  (0 error(s), 1 warning(s))
+
+1. TABLE CREATION ORDER
+   1. courses
+   2. enrollments
+   3. students
+   4. batches
+   5. payments
+
+2. DATA LOADING ORDER (parents before children)
+   1. courses
+   2. enrollments
+   3. students
+   4. batches
+   5. payments
+
+3. CONSTRAINT CREATION
+   - courses: PRIMARY KEY / UNIQUE / CHECK are created with the table
+   - enrollments: PRIMARY KEY / UNIQUE / CHECK are created with the table
+   - students: PRIMARY KEY / UNIQUE / CHECK are created with the table
+   - batches: PRIMARY KEY / UNIQUE / CHECK are created with the table
+   - payments: PRIMARY KEY / UNIQUE / CHECK are created with the table
+   - batches → courses: FOREIGN KEY with the child table
+   - payments → enrollments: FOREIGN KEY with the child table
+
+4. REQUIRED TRANSFORMATIONS
+   - payments.amount: loaded as text; to use numeric(10,2) first fix the flagged values.
+   - students.admission_date: read dates as DMY; the loader/server must interpret them the same way.
+   - payments_and_batches.xlsx: Excel files cannot be bulk-loaded directly - use the import-ready CSV files.
+
+5. VALIDATION BEFORE LOADING
+   No validation errors were found against the source data.
+
+6. SKIPPED CHECKS
+   none

@@ -1,0 +1,23 @@
+OUTPUT C - DATA LOADING GUIDANCE (guidance only: this tool never connects to a database or loads data)
+
+Use the import-ready CSV files from the download bundle (folder import_ready_csv/). Each holds only the included
+columns, in the table's column order, with the target column names as header. Values are exactly as read.
+
+Server-side COPY runs on the database SERVER: the file must be readable by the server process and you need
+superuser or pg_read_server_files rights. Client-side \copy (psql) reads the file from YOUR machine and needs
+no special rights. For most users \copy is the right choice.
+
+\copy courses (course_id, course_name, fee) FROM 'courses.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+-- server-side equivalent: COPY courses (course_id, course_name, fee) FROM '/absolute/path/on/server/courses.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8');
+
+\copy enrollments (enrollment_id, student_id, course_id, is_active) FROM 'enrollments.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+-- server-side equivalent: COPY enrollments (enrollment_id, student_id, course_id, is_active) FROM '/absolute/path/on/server/enrollments.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8');
+
+\copy students (student_id, student_name, phone, admission_date, city, postal_code) FROM 'students.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+-- server-side equivalent: COPY students (student_id, student_name, phone, admission_date, city, postal_code) FROM '/absolute/path/on/server/students.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8');
+
+\copy batches (batch_id, course_id, start_date) FROM 'batches.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+-- server-side equivalent: COPY batches (batch_id, course_id, start_date) FROM '/absolute/path/on/server/batches.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8');
+
+\copy payments (payment_id, enrollment_id, amount, paid_on, mode) FROM 'payments.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+-- server-side equivalent: COPY payments (payment_id, enrollment_id, amount, paid_on, mode) FROM '/absolute/path/on/server/payments.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8');
